@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51529f18ee1fe324cae6c8773d866c8c, type: 3}
+  m_Name: EquipmentTable
+  m_EditorClassIdentifier: Assembly-CSharp::LootLab.Equipment.EquipmentTable
+  _items:
+  - _id: 1001
+    _displayName: Sword
+    _grade: 0
+    _icon: {fileID: 0}
+    _materialExp: 100
+  - _id: 1002
+    _displayName: Axe
+    _grade: 1
+    _icon: {fileID: 0}
+    _materialExp: 200
+  - _id: 1003
+    _displayName: Shield
+    _grade: 2
+    _icon: {fileID: 0}
+    _materialExp: 400
+  - _id: 1004
+    _displayName: Helmet
+    _grade: 0
+    _icon: {fileID: 0}
+    _materialExp: 100
+  - _id: 1005
+    _displayName: Armor
+    _grade: 3
+    _icon: {fileID: 0}
+    _materialExp: 800
+  - _id: 1006
+    _displayName: Boots
+    _grade: 4
+    _icon: {fileID: 0}
+    _materialExp: 1600
