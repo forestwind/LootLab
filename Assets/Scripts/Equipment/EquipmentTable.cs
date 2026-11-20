@@ -10,18 +10,6 @@ namespace LootLab.Equipment
 
         private Dictionary<int, EquipmentData> _idToItem;
 
-        public IReadOnlyList<EquipmentData> Items
-        {
-            get
-            {
-                if (_items == null)
-                {
-                    _items = new List<EquipmentData>();
-                }
-                return _items;
-            }
-        }
-
         public bool TryGet(int id, out EquipmentData data)
         {
             if (_idToItem == null)

@@ -69,7 +69,7 @@ namespace LootLab.Enhance
             LevelInfo beforeLevelInfo = target.LevelInfo;
             LevelInfo afterLevelInfo = target.GetLevelInfoAt(target.TotalExp + appliedExp);
 
-            return new EnhancePreview(EnhanceError.None, gainedExp, wastedExp, cost, beforeLevelInfo, afterLevelInfo);
+            return EnhancePreview.Success(gainedExp, wastedExp, cost, beforeLevelInfo, afterLevelInfo);
         }
     }
 }

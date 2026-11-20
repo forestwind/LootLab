@@ -10,18 +10,6 @@ namespace LootLab.Level
 
         private Dictionary<int, ExpTable> _idToTable;
 
-        public IReadOnlyList<ExpTable> Tables
-        {
-            get
-            {
-                if (_tables == null)
-                {
-                    _tables = new List<ExpTable>();
-                }
-                return _tables;
-            }
-        }
-
         public bool TryGet(int id, out ExpTable table)
         {
             if (_idToTable == null)
