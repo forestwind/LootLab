@@ -140,3 +140,9 @@ crashlytics-build.properties
 # Local IDE settings
 .vscode/
 .idea/
+
+# Project documents (local only)
+/[Dd]ocs/
+
+# Claude Code MCP settings (local only)
+/.mcp.json
