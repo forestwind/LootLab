@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ab641055f183fc45bfbf88109c3acf7, type: 3}
+  m_Name: ExpTableSet
+  m_EditorClassIdentifier: Assembly-CSharp::LootLab.Equipment.ExpTableSet
+  _tables:
+  - _id: 1
+    _totalExpForLevel: 640000002c01000058020000e8030000dc05000034080000f00a0000100e000094110000
+  - _id: 2
+    _totalExpForLevel: c800000058020000b0040000d0070000b80b000068100000e0150000201c000028230000

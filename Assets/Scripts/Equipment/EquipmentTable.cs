@@ -10,7 +10,17 @@ namespace LootLab.Equipment
 
         private Dictionary<int, EquipmentData> _idToItem;
 
-        public IReadOnlyList<EquipmentData> Items => _items;
+        public IReadOnlyList<EquipmentData> Items
+        {
+            get
+            {
+                if (_items == null)
+                {
+                    _items = new List<EquipmentData>();
+                }
+                return _items;
+            }
+        }
 
         public bool TryGet(int id, out EquipmentData data)
         {
@@ -23,9 +33,25 @@ namespace LootLab.Equipment
 
         private void BuildLookup()
         {
-            _idToItem = new Dictionary<int, EquipmentData>(_items.Count);
-            foreach (EquipmentData item in _items)
+            _idToItem = new Dictionary<int, EquipmentData>();
+            if (_items == null)
             {
+                return;
+            }
+
+            for (int i = 0; i < _items.Count; i++)
+            {
+                EquipmentData item = _items[i];
+                if (item == null)
+                {
+                    Debug.LogError($"Equipment table has an empty entry at index {i}", this);
+                    continue;
+                }
+                if (item.Id <= 0)
+                {
+                    Debug.LogError($"Invalid equipment id {item.Id} at index {i}", this);
+                    continue;
+                }
                 if (_idToItem.ContainsKey(item.Id))
                 {
                     Debug.LogError($"Duplicate equipment id: {item.Id}", this);

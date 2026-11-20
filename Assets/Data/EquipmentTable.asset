@@ -18,28 +18,34 @@ MonoBehaviour:
     _grade: 0
     _icon: {fileID: 0}
     _materialExp: 100
+    _expTableId: 1
   - _id: 1002
     _displayName: Axe
     _grade: 1
     _icon: {fileID: 0}
     _materialExp: 200
+    _expTableId: 1
   - _id: 1003
     _displayName: Shield
     _grade: 2
     _icon: {fileID: 0}
     _materialExp: 400
+    _expTableId: 2
   - _id: 1004
     _displayName: Helmet
     _grade: 0
     _icon: {fileID: 0}
     _materialExp: 100
+    _expTableId: 1
   - _id: 1005
     _displayName: Armor
     _grade: 3
     _icon: {fileID: 0}
     _materialExp: 800
+    _expTableId: 2
   - _id: 1006
     _displayName: Boots
     _grade: 4
     _icon: {fileID: 0}
     _materialExp: 1600
+    _expTableId: 2
