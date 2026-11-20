@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ab641055f183fc45bfbf88109c3acf7, type: 3}
   m_Name: ExpTableSet
-  m_EditorClassIdentifier: Assembly-CSharp::LootLab.Equipment.ExpTableSet
+  m_EditorClassIdentifier: Assembly-CSharp::LootLab.Level.ExpTableSet
   _tables:
   - _id: 1
     _totalExpForLevel: 640000002c01000058020000e8030000dc05000034080000f00a0000100e000094110000

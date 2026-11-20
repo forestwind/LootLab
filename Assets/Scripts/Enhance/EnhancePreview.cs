@@ -35,6 +35,7 @@ namespace LootLab.Enhance
             AfterLevelInfo = afterLevelInfo;
         }
 
+        // 실패 시 LevelInfo는 default (Level 0). UI는 IsValid를 먼저 확인할 것.
         public static EnhancePreview Fail(EnhanceError error)
         {
             return new EnhancePreview(error, 0, 0, 0, default, default);

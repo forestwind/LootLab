@@ -60,10 +60,12 @@ namespace LootLab.Level
                 if (!table.HasValidOrder())
                 {
                     Debug.LogError($"Exp table {table.Id} must be in ascending order", this);
+                    continue;
                 }
                 if (table.MaxLevel <= 1)
                 {
                     Debug.LogError($"Exp table {table.Id} has no levels", this);
+                    continue;
                 }
                 _idToTable.Add(table.Id, table);
             }

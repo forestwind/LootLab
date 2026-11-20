@@ -57,6 +57,11 @@ namespace LootLab.Equipment
                     Debug.LogError($"Duplicate equipment id: {item.Id}", this);
                     continue;
                 }
+                if (item.MaterialExp < 0)
+                {
+                    Debug.LogError($"Equipment {item.Id} has negative material exp: {item.MaterialExp}", this);
+                    continue;
+                }
                 _idToItem.Add(item.Id, item);
             }
         }

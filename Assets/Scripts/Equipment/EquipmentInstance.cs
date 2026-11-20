@@ -50,6 +50,10 @@ namespace LootLab.Equipment
                 Debug.LogError($"Equipment {uid} (data {data.Id}) uses exp table {data.ExpTableId}, got {expTable.Id}.");
                 return false;
             }
+            if (totalExp < 0 || totalExp > expTable.MaxTotalExp)
+            {
+                Debug.LogWarning($"Equipment {uid} (data {data.Id}) exp {totalExp} is out of range 0~{expTable.MaxTotalExp}. Clamped.");
+            }
 
             instance = new EquipmentInstance(uid, data, expTable, totalExp);
             return true;
