@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace LootLab.Player
 {
-    public class PlayerInventory
+    public class PlayerInventory : IReadOnlyInventory
     {
         private readonly EquipmentTable _equipmentTable;
         private readonly ExpTableSet _expTableSet;

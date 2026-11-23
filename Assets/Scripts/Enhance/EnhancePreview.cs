@@ -3,10 +3,11 @@ using UnityEngine;
 
 namespace LootLab.Enhance
 {
+    /// <summary>강화 결과 코드 (None이 성공)</summary>
     public enum EnhanceError
     {
-        Uninitialized,      // 초기화되지 않음 (default가 성공으로 판정되지 않도록 0번에 둠)
-        None,              // 강화 가능
+        Uninitialized,      // 초기화되지 않은 결과
+        None,               // 강화 가능
         NoTarget,           // 강화할 장비 없음
         TargetMaxLevel,     // 강화할 장비가 이미 최대 레벨
         NoMaterials,        // 재료 없음
@@ -17,10 +18,13 @@ namespace LootLab.Enhance
         NotEnoughGold,      // 골드 부족
     }
 
+    /// <summary>
+    /// 강화 계산 결과: 재료 경험치, 실제 적용·버려지는 경험치, 골드 비용, 강화 전후 레벨
+    /// </summary>
     public readonly struct EnhancePreview
     {
         public EnhanceError Error { get; }
-        public int TotalMaterialExp { get; }
+        public int TotalMaterialExp { get; }    // 버려지는 양 포함
         public int AppliedExp { get; }
         public int WastedExp { get; }
         public int GoldCost { get; }
@@ -47,7 +51,6 @@ namespace LootLab.Enhance
             return new EnhancePreview(EnhanceError.None, totalMaterialExp, appliedExp, wastedExp, goldCost, beforeLevelInfo, afterLevelInfo);
         }
 
-        // 실패 시 LevelInfo는 default (Level 0). UI는 IsValid를 먼저 확인할 것.
         public static EnhancePreview Fail(EnhanceError error)
         {
             if (error == EnhanceError.None)
