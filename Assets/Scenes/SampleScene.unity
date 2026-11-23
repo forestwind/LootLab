@@ -2810,6 +2810,14 @@ MonoBehaviour:
   - {fileID: 703357334}
   - {fileID: 1703092333}
   - {fileID: 1510274807}
+  _levelText: {fileID: 1741941404}
+  _currentFill: {fileID: 1941262647}
+  _previewFill: {fileID: 49241781}
+  _expText: {fileID: 1681757152}
+  _costText: {fileID: 444426956}
+  _messageText: {fileID: 651569455}
+  _goldText: {fileID: 1179973649}
+  _enhanceButton: {fileID: 1477280885}
 --- !u!1 &1681757150
 GameObject:
   m_ObjectHideFlags: 0
