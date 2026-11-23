@@ -1411,6 +1411,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8540965423505195434, guid: 21c9794f1e5d94e42823c49a75fa2502, type: 3}
   m_PrefabInstance: {fileID: 648610346}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &648610348 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5578077287018401385, guid: 21c9794f1e5d94e42823c49a75fa2502, type: 3}
+  m_PrefabInstance: {fileID: 648610346}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22c2495d233003b4b825a069240b044c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LootLab.UI.EquipmentSlotView
 --- !u!1 &651569453
 GameObject:
   m_ObjectHideFlags: 0
@@ -1548,6 +1559,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 651569453}
   m_CullTransparentMesh: 1
+--- !u!114 &703357334 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5578077287018401385, guid: 21c9794f1e5d94e42823c49a75fa2502, type: 3}
+  m_PrefabInstance: {fileID: 369296409}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22c2495d233003b4b825a069240b044c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LootLab.UI.EquipmentSlotView
 --- !u!1001 &722185848
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2362,7 +2384,7 @@ MonoBehaviour:
   _expTableSet: {fileID: 11400000, guid: c9fe12b2b390b52448d42ebfae33b9df, type: 2}
   _goldCostPerExp: 1
   _startGold: 10000
-  _startEquipmentIds: e9030000e9030000ea030000eb030000ec030000ed030000ee030000
+  _startEquipmentIds: e9030000ea030000eb030000ec030000ed030000ee030000e9030000
 --- !u!4 &1345537605
 Transform:
   m_ObjectHideFlags: 0
@@ -2651,6 +2673,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1477280883}
   m_CullTransparentMesh: 1
+--- !u!114 &1510274807 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5578077287018401385, guid: 21c9794f1e5d94e42823c49a75fa2502, type: 3}
+  m_PrefabInstance: {fileID: 286496656}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22c2495d233003b4b825a069240b044c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LootLab.UI.EquipmentSlotView
 --- !u!1 &1673398670
 GameObject:
   m_ObjectHideFlags: 0
@@ -2663,6 +2696,7 @@ GameObject:
   - component: {fileID: 1673398673}
   - component: {fileID: 1673398672}
   - component: {fileID: 1673398671}
+  - component: {fileID: 1673398675}
   m_Layer: 5
   m_Name: EnhanceCanvas
   m_TagString: Untagged
@@ -2756,6 +2790,26 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1673398675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673398670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79d548c89c3d9f0418cf4e1d00e8425e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LootLab.UI.EnhanceScreen
+  _listView: {fileID: 1080996003}
+  _targetSlot: {fileID: 1942144022}
+  _materialSlots:
+  - {fileID: 2123797005}
+  - {fileID: 648610348}
+  - {fileID: 703357334}
+  - {fileID: 1703092333}
+  - {fileID: 1510274807}
 --- !u!1 &1681757150
 GameObject:
   m_ObjectHideFlags: 0
@@ -2893,6 +2947,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1681757150}
   m_CullTransparentMesh: 1
+--- !u!114 &1703092333 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5578077287018401385, guid: 21c9794f1e5d94e42823c49a75fa2502, type: 3}
+  m_PrefabInstance: {fileID: 350463675}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22c2495d233003b4b825a069240b044c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LootLab.UI.EquipmentSlotView
 --- !u!1 &1741941402
 GameObject:
   m_ObjectHideFlags: 0
@@ -3542,6 +3607,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8540965423505195434, guid: 21c9794f1e5d94e42823c49a75fa2502, type: 3}
   m_PrefabInstance: {fileID: 1942144020}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1942144022 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5578077287018401385, guid: 21c9794f1e5d94e42823c49a75fa2502, type: 3}
+  m_PrefabInstance: {fileID: 1942144020}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22c2495d233003b4b825a069240b044c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LootLab.UI.EquipmentSlotView
 --- !u!1 &1955058402
 GameObject:
   m_ObjectHideFlags: 0
@@ -3769,6 +3845,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2109282009}
   m_CullTransparentMesh: 1
+--- !u!114 &2123797005 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5578077287018401385, guid: 21c9794f1e5d94e42823c49a75fa2502, type: 3}
+  m_PrefabInstance: {fileID: 722185848}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22c2495d233003b4b825a069240b044c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LootLab.UI.EquipmentSlotView
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
