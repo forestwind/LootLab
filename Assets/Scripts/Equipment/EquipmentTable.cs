@@ -10,6 +10,18 @@ namespace LootLab.Equipment
 
         private Dictionary<int, EquipmentData> _idToItem;
 
+        public IReadOnlyCollection<int> Ids
+        {
+            get
+            {
+                if (_idToItem == null)
+                {
+                    BuildLookup();
+                }
+                return _idToItem.Keys;
+            }
+        }
+
         public bool TryGet(int id, out EquipmentData data)
         {
             if (_idToItem == null)

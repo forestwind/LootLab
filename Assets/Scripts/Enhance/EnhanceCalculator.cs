@@ -35,7 +35,7 @@ namespace LootLab.Enhance
                 return EnhancePreview.Fail(EnhanceError.NoMaterials);
             }
 
-            HashSet<int> materialUids = new HashSet<int>();
+            HashSet<Guid> materialUids = new HashSet<Guid>();
             long totalGainedExp = 0;
             foreach (EquipmentInstance material in materials)
             {

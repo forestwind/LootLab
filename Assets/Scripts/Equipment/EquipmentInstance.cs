@@ -1,3 +1,4 @@
+using System;
 using LootLab.Level;
 using UnityEngine;
 
@@ -7,10 +8,12 @@ namespace LootLab.Equipment
     {
         private readonly ExpTable _expTable;
 
-        public int Uid { get; }
+        public Guid Uid { get; }
+        public DateTime AcquiredAtUtc { get; }
         public EquipmentData Data { get; }
         public int TotalExp { get; private set; }
 
+        public string ShortUid => Uid.ToString("N").Substring(0, 8);
         public LevelInfo LevelInfo => _expTable.GetLevelInfo(TotalExp);
         public int Level => LevelInfo.Level;
         public bool IsMaxLevel => LevelInfo.IsMaxLevel;
@@ -18,44 +21,52 @@ namespace LootLab.Equipment
 
         public LevelInfo GetLevelInfoAt(int totalExp) => _expTable.GetLevelInfo(totalExp);
 
-        private EquipmentInstance(int uid, EquipmentData data, ExpTable expTable, int totalExp)
+        private EquipmentInstance(Guid uid, DateTime acquiredAtUtc, EquipmentData data, ExpTable expTable, int totalExp)
         {
             Uid = uid;
+            AcquiredAtUtc = acquiredAtUtc;
             Data = data;
             _expTable = expTable;
             TotalExp = Mathf.Clamp(totalExp, 0, expTable.MaxTotalExp);
         }
 
-        public static bool TryCreate(int uid, EquipmentData data, ExpTable expTable, int totalExp, out EquipmentInstance instance)
+        public static bool TryCreate(Guid uid, DateTime acquiredAtUtc, EquipmentData data, ExpTable expTable, int totalExp, out EquipmentInstance instance)
         {
             instance = null;
 
-            if (uid <= 0)
+            if (uid == Guid.Empty)
             {
-                Debug.LogError($"Invalid equipment uid: {uid}");
+                Debug.LogError("Equipment uid is empty.");
+                return false;
+            }
+
+            string shortUid = uid.ToString("N").Substring(0, 8);
+            if (acquiredAtUtc.Kind != DateTimeKind.Utc)
+            {
+                Debug.LogError($"Equipment {shortUid} acquired time must be UTC, got {acquiredAtUtc.Kind}.");
                 return false;
             }
             if (data == null)
             {
-                Debug.LogError($"Equipment {uid} has no data.");
+                Debug.LogError($"Equipment {shortUid} has no data.");
                 return false;
             }
             if (expTable == null)
             {
-                Debug.LogError($"Equipment {uid} (data {data.Id}) has no exp table.");
+                Debug.LogError($"Equipment {shortUid} (data {data.Id}) has no exp table.");
                 return false;
             }
             if (data.ExpTableId != expTable.Id)
             {
-                Debug.LogError($"Equipment {uid} (data {data.Id}) uses exp table {data.ExpTableId}, got {expTable.Id}.");
+                Debug.LogError($"Equipment {shortUid} (data {data.Id}) uses exp table {data.ExpTableId}, got {expTable.Id}.");
                 return false;
             }
             if (totalExp < 0 || totalExp > expTable.MaxTotalExp)
             {
-                Debug.LogWarning($"Equipment {uid} (data {data.Id}) exp {totalExp} is out of range 0~{expTable.MaxTotalExp}. Clamped.");
+                Debug.LogWarning($"Equipment {shortUid} (data {data.Id}) exp {totalExp} is out of range 0~{expTable.MaxTotalExp}. Clamped.");
             }
 
-            instance = new EquipmentInstance(uid, data, expTable, totalExp);
+            instance = new EquipmentInstance(uid, acquiredAtUtc, data, expTable, totalExp);
             return true;
         }
 
