@@ -12,14 +12,18 @@ namespace LootLab.Enhance
         NoMaterials,        // 재료 없음
         MaterialIsTarget,   // 강화할 장비를 재료로 선택함
         DuplicateMaterial,  // 같은 재료를 두 번 선택함
+        InvalidMaterial,    // 재료가 비어 있거나 재료 경험치가 0
+        NotOwned,           // 대상이나 재료가 인벤토리에 없음
+        NotEnoughGold,      // 골드 부족
     }
 
     public readonly struct EnhancePreview
     {
         public EnhanceError Error { get; }
-        public int GainedExp { get; }
+        public int TotalMaterialExp { get; }
+        public int AppliedExp { get; }
         public int WastedExp { get; }
-        public int Cost { get; }
+        public int GoldCost { get; }
         public LevelInfo BeforeLevelInfo { get; }
         public LevelInfo AfterLevelInfo { get; }
 
@@ -27,19 +31,20 @@ namespace LootLab.Enhance
         public bool HasWastedExp => WastedExp > 0;
         public int LevelsGained => AfterLevelInfo.Level - BeforeLevelInfo.Level;
 
-        private EnhancePreview(EnhanceError error, int gainedExp, int wastedExp, int cost, LevelInfo beforeLevelInfo, LevelInfo afterLevelInfo)
+        private EnhancePreview(EnhanceError error, int totalMaterialExp, int appliedExp, int wastedExp, int goldCost, LevelInfo beforeLevelInfo, LevelInfo afterLevelInfo)
         {
             Error = error;
-            GainedExp = gainedExp;
+            TotalMaterialExp = totalMaterialExp;
+            AppliedExp = appliedExp;
             WastedExp = wastedExp;
-            Cost = cost;
+            GoldCost = goldCost;
             BeforeLevelInfo = beforeLevelInfo;
             AfterLevelInfo = afterLevelInfo;
         }
 
-        public static EnhancePreview Success(int gainedExp, int wastedExp, int cost, LevelInfo beforeLevelInfo, LevelInfo afterLevelInfo)
+        public static EnhancePreview Success(int totalMaterialExp, int appliedExp, int wastedExp, int goldCost, LevelInfo beforeLevelInfo, LevelInfo afterLevelInfo)
         {
-            return new EnhancePreview(EnhanceError.None, gainedExp, wastedExp, cost, beforeLevelInfo, afterLevelInfo);
+            return new EnhancePreview(EnhanceError.None, totalMaterialExp, appliedExp, wastedExp, goldCost, beforeLevelInfo, afterLevelInfo);
         }
 
         // 실패 시 LevelInfo는 default (Level 0). UI는 IsValid를 먼저 확인할 것.
@@ -50,7 +55,7 @@ namespace LootLab.Enhance
                 Debug.LogError("EnhancePreview.Fail called with EnhanceError.None.");
                 error = EnhanceError.Uninitialized;
             }
-            return new EnhancePreview(error, 0, 0, 0, default, default);
+            return new EnhancePreview(error, 0, 0, 0, 0, default, default);
         }
     }
 }

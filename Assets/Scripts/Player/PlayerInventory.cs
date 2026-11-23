@@ -67,6 +67,19 @@ namespace LootLab.Player
             return _uidToEquipment.TryGetValue(uid, out equipment);
         }
 
+        public bool Contains(EquipmentInstance equipment)
+        {
+            if (equipment == null)
+            {
+                return false;
+            }
+            if (!_uidToEquipment.TryGetValue(equipment.Uid, out EquipmentInstance owned))
+            {
+                return false;
+            }
+            return owned == equipment;
+        }
+
         public bool RemoveEquipment(Guid uid)
         {
             if (!_uidToEquipment.TryGetValue(uid, out EquipmentInstance equipment))
@@ -78,6 +91,32 @@ namespace LootLab.Player
             _equipments.Remove(equipment);
             NotifyEquipmentsChanged();
             return true;
+        }
+
+        public int RemoveEquipments(IReadOnlyList<EquipmentInstance> equipments)
+        {
+            if (equipments == null)
+            {
+                return 0;
+            }
+
+            int removedCount = 0;
+            foreach (EquipmentInstance equipment in equipments)
+            {
+                if (!Contains(equipment))
+                {
+                    continue;
+                }
+                _uidToEquipment.Remove(equipment.Uid);
+                _equipments.Remove(equipment);
+                removedCount++;
+            }
+
+            if (removedCount > 0)
+            {
+                NotifyEquipmentsChanged();
+            }
+            return removedCount;
         }
 
         public void AddGold(int amount)

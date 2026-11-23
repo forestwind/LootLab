@@ -36,13 +36,13 @@ namespace LootLab.Enhance
             }
 
             HashSet<Guid> materialUids = new HashSet<Guid>();
-            long totalGainedExp = 0;
+            long totalMaterialExpSum = 0;
             foreach (EquipmentInstance material in materials)
             {
                 if (material == null)
                 {
-                    Debug.LogError("Enhance material list has an empty entry.");
-                    continue;
+                    Debug.LogError("Enhance material list has an empty entry. Filter empty slots before calling Preview.");
+                    return EnhancePreview.Fail(EnhanceError.InvalidMaterial);
                 }
                 if (material.Uid == target.Uid)
                 {
@@ -52,24 +52,23 @@ namespace LootLab.Enhance
                 {
                     return EnhancePreview.Fail(EnhanceError.DuplicateMaterial);
                 }
-                totalGainedExp += material.Data.MaterialExp;
+                if (material.Data.MaterialExp <= 0)
+                {
+                    return EnhancePreview.Fail(EnhanceError.InvalidMaterial);
+                }
+                totalMaterialExpSum += material.Data.MaterialExp;
             }
 
-            if (materialUids.Count == 0)
-            {
-                return EnhancePreview.Fail(EnhanceError.NoMaterials);
-            }
-
-            int gainedExp = (int)Math.Min(totalGainedExp, int.MaxValue);
+            int totalMaterialExp = (int)Math.Min(totalMaterialExpSum, int.MaxValue);
             int remainingExpToMax = target.MaxTotalExp - target.TotalExp;
-            int appliedExp = Math.Min(gainedExp, remainingExpToMax);
-            int wastedExp = gainedExp - appliedExp;
-            int cost = (int)Math.Min((long)gainedExp * _goldCostPerExp, int.MaxValue);
+            int appliedExp = Math.Min(totalMaterialExp, remainingExpToMax);
+            int wastedExp = totalMaterialExp - appliedExp;
+            int goldCost = (int)Math.Min((long)totalMaterialExp * _goldCostPerExp, int.MaxValue);
 
             LevelInfo beforeLevelInfo = target.LevelInfo;
             LevelInfo afterLevelInfo = target.GetLevelInfoAt(target.TotalExp + appliedExp);
 
-            return EnhancePreview.Success(gainedExp, wastedExp, cost, beforeLevelInfo, afterLevelInfo);
+            return EnhancePreview.Success(totalMaterialExp, appliedExp, wastedExp, goldCost, beforeLevelInfo, afterLevelInfo);
         }
     }
 }
