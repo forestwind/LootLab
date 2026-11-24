@@ -257,8 +257,7 @@ namespace LootLab.UI
         {
             // 이전 연출이 남아 있으면 먼저 취소. 덮어쓰면 이전 연출을 멈출 방법이 사라짐
             StopAnimation();
-
-            // CancellationTokenSource = 취소 버튼, .Token = 그 버튼에 연결된 신호선
+            
             // 신호선(Token)을 await하는 곳마다 넘겨 두면, 버튼(Cancel)을 눌렀을 때 그 await에서 멈춤
             CancellationTokenSource cancellation = new CancellationTokenSource();
             _animationCancellation = cancellation;
@@ -267,8 +266,7 @@ namespace LootLab.UI
 
             try
             {
-                // await: 연출이 끝날 때까지 이 함수만 여기서 멈춤
-                // 코루틴의 yield return StartCoroutine과 같은 역할을 함
+                // await: 연출이 끝날 때까지 대기
                 await AnimateGaugeAsync(result.BeforeLevelInfo, result.AfterLevelInfo, cancellation.Token);
             }
             catch (OperationCanceledException)
