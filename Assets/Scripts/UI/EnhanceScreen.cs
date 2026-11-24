@@ -258,7 +258,7 @@ namespace LootLab.UI
             // 이전 연출이 남아 있으면 먼저 취소. 덮어쓰면 이전 연출을 멈출 방법이 사라짐
             StopAnimation();
             
-            // 신호선(Token)을 await하는 곳마다 넘겨 두면, 버튼(Cancel)을 눌렀을 때 그 await에서 멈춤
+            // Cancel을 통해 await에서 중단
             CancellationTokenSource cancellation = new CancellationTokenSource();
             _animationCancellation = cancellation;
             _enhanceButton.interactable = false;
